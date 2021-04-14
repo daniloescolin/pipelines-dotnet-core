@@ -15,3 +15,10 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+- task: WindowsMachineFileCopy@2
+  inputs:
+    SourcePath: '$(Build.ArtifactStagingDirectory)/DevBuildArtifacts'
+    MachineNames: '172.29.113.4'
+    AdminUserName: 'test'
+    AdminPassword: 'test'
+    TargetPath: C:\Temp\DSC'
